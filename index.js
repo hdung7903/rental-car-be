@@ -1,5 +1,6 @@
 // import { defaultErrorHandler } from './middlewares/error.middlewares'
 import usersRouter from './routes/users.routes.js'
+import carsRoutes from './routes/cars.routes.js'
 import databaseServices from './services/database.services.js'
 import { defaultErrorHandler } from './middlewares/errors.middlewares.js'
 import bodyParser from 'body-parser'
@@ -33,6 +34,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use('/users', usersRouter)
+app.use('/cars', carsRoutes)
 
 app.use(defaultErrorHandler)
 app.listen(port, () => {
