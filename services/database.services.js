@@ -8,8 +8,8 @@ class databaseService {
   connect() {
     return mongoose
       .connect(
-       // 'mongodb+srv://anhsangprovl:anhsangprovl@cluster0.defhizq.mongodb.net/rental-car?retryWrites=true&w=majority'
-       "mongodb://127.0.0.1/PWD_rental"
+        //'mongodb+srv://anhsangprovl:anhsangprovl@cluster0.defhizq.mongodb.net/rental-car?retryWrites=true&w=majority'
+        "mongodb://127.0.0.1/PWD_rental"
       )
       .then(() => {
         console.log('Connected to MongoDB')
@@ -18,27 +18,6 @@ class databaseService {
         console.log(err)
       })
   }
-
-  // #client
-  // #db
-
-  // constructor() {
-  //   this.#client = new MongoClient(uri)
-  //   this.#db = this.#client.db('rental-car')
-  // }
-
-  // async connect() {
-  //   try {
-  //     await this.#db.command({ ping: 1 })
-  //     console.log('Pinged your deployment. You successfully connected to MongoDB!')
-  //   } catch {
-  //     console.dir
-  //   }
-  // }
-
-  // get users() {
-  //   return this.#db.collection('User')
-  // }
 }
 
 const databaseServices = new databaseService()

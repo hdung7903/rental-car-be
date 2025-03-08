@@ -1,6 +1,6 @@
 import { wrapRequestHandler } from '../utils/handlers.js'
-import { createOrderPaymentController, createOrderPaymentMOMOController } from '../controllers/payments.controller.js'
 import express from 'express'
+import { createPaymentLink } from '../controllers/payments.controller.js'
 
 const paymentsRoutes = express.Router()
 /**
@@ -9,7 +9,7 @@ const paymentsRoutes = express.Router()
  * Method: POST
  * Body:{ }
  */
-paymentsRoutes.post('/create_payment_url', wrapRequestHandler(createOrderPaymentController))
+paymentsRoutes.post('/create_payment_url', wrapRequestHandler(createPaymentLink))
 
 /**
  * Description: Payment method MOMO
@@ -17,6 +17,6 @@ paymentsRoutes.post('/create_payment_url', wrapRequestHandler(createOrderPayment
  * Method: POST
  * Body:{ }
  */
-paymentsRoutes.post('/create_payment_url_momo', wrapRequestHandler(createOrderPaymentMOMOController))
+// paymentsRoutes.post('/create_payment_url_momo', wrapRequestHandler(createOrderPaymentMOMOController))
 
 export default paymentsRoutes

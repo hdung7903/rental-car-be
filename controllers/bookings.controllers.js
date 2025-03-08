@@ -41,7 +41,7 @@ export const bookRecord = async (req, res) => {
       result
     })
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
       .json({ message: 'Thời gian đã được chọn. Vui lòng chọn ngày khác!' })

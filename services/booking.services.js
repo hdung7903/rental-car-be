@@ -86,6 +86,8 @@ class BookingServices {
       }).session(session)
 
       if (existingBookedTimeSlots) {
+        console.log(existingBookedTimeSlots);
+        
         // Resource is already booked, handle accordingly
         throw new Error('Record already booked')
       }
