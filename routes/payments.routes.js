@@ -1,6 +1,6 @@
 import { wrapRequestHandler } from '../utils/handlers.js'
 import express from 'express'
-import { createPaymentLink } from '../controllers/payments.controller.js'
+import { createPaymentLink, getPaymentLinkInformation } from '../controllers/payments.controller.js'
 
 const paymentsRoutes = express.Router()
 /**
@@ -17,6 +17,6 @@ paymentsRoutes.post('/create_payment_url', wrapRequestHandler(createPaymentLink)
  * Method: POST
  * Body:{ }
  */
-// paymentsRoutes.post('/create_payment_url_momo', wrapRequestHandler(createOrderPaymentMOMOController))
+paymentsRoutes.get('/get_payment', wrapRequestHandler(getPaymentLinkInformation))
 
 export default paymentsRoutes

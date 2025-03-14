@@ -41,7 +41,7 @@ export const bookRecord = async (req, res) => {
       result
     })
   } catch (error) {
-    console.log(error);
+    console.log(error)
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
       .json({ message: 'Thời gian đã được chọn. Vui lòng chọn ngày khác!' })
@@ -82,6 +82,7 @@ export const getHistoryBooking = async (req, res) => {
   try {
     const bookBy = req.decoded_authorization.user_id
     const result = await bookingService.getHistoryBooking(bookBy)
+    console.log('Check history', result)
     if (!result) {
       return res.status(HTTP_STATUS.NOT_FOUND).json({ error: 'Booking not found' })
     } else {
