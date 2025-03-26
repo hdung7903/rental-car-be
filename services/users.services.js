@@ -6,6 +6,7 @@ import { ObjectId } from 'mongodb'
 import User from '../models/user.model.js'
 import { comparePassword, hashPassword } from '../utils/crypto.js'
 import { TokenType } from '../constants/enums.js'
+import mongoose from 'mongoose'
 config()
 class UsersService {
   signAccessToken(user_id, role) {
@@ -110,6 +111,17 @@ class UsersService {
     } catch (error) {}
   }
 
+  async getUserByDriverId(driverId) {
+    try {
+      const objectId = new mongoose.Types.ObjectId(driverId);
+      const user = await User.findOne({ driverLicenses: objectId });
+      return user;
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
+    }
+  }
+  
   async updateUser(user_id, payload, payloadFile) {
     try {
       if (payloadFile && payloadFile.path) {
