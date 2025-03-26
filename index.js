@@ -18,6 +18,8 @@ import paymentsRoutes from './routes/payments.routes.js'
 import { config } from 'dotenv'
 import bookingRoutes from './routes/booking.routes.js'
 import contractsRoutes from './routes/contracts.routes.js'
+import tesseractRoutes from "./routes/Tesseract.routes.js";
+
 
 config()
 const app = express()
@@ -52,6 +54,7 @@ app.use('/coupons', couponsRoutes)
 app.use('/contracts', contractsRoutes)
 app.use('/final-contracts', finalContractsRoutes)
 app.use('/admin', adminRoutes)
+app.use('/tesseract', tesseractRoutes)
 
 app.use(defaultErrorHandler)
 app.listen(port, () => {
