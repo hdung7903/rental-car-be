@@ -22,6 +22,30 @@ export const registerController = async (req, res, next) => {
 //   })
 // }
 
+export const userbydriver = async (req, res) => {
+  try {
+    const { driverId } = req.body; // Hoặc req.query nếu cần
+
+    if (!driverId) {
+      return res.status(400).json({ message: "Missing driverId" });
+    }
+
+    const user = await usersService.getUserByDriverId(driverId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.json({
+      message: "Get profile success",
+      result: user,
+      id: user._id,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const loginController = async (req, res) => {
   const result = await usersService.login(req.user)
 

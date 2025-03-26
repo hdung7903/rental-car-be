@@ -10,6 +10,7 @@ import {
 import { wrapRequestHandler } from '../utils/handlers.js'
 import {
   registerController,
+  userbydriver,
   loginController,
   googleController,
   getUserController,
@@ -99,14 +100,6 @@ usersRoutes.get('/verify-otp/:code', wrapRequestHandler(verifyOTPController))
  * Method: PUT
  */
 usersRoutes.put('/reset-password', wrapRequestHandler(resetPasswordController))
-
-/**
- * Description: Register Mail
- * Path: /register-mail
- * Method: POST
- * Body: {email: String,name: string, text: String, subject: String}
- */
-
 /**
  * Description: Register Mail
  * Path: /register-mail
@@ -114,6 +107,8 @@ usersRoutes.put('/reset-password', wrapRequestHandler(resetPasswordController))
  * Body: {email: String,name: string, text: String, subject: String}
  */
 usersRoutes.post('/register-mail', wrapRequestHandler(registerMailController))
+
+usersRoutes.post('/get-user-by-driverid', wrapRequestHandler(userbydriver))
 
 usersRoutes.put('/change-password', accessTokenValidator, wrapRequestHandler(changePasswordController))
 
