@@ -44,13 +44,16 @@ class DriverLicensesService {
 
   async deleteLicensesDrivers(did) {
     try {
-      const deleteDriverLicense = await DriverLicenses.findByIdAndDelete(did)
+      const deleteDriverLicense = await DriverLicenses.findByIdAndDelete(did);
       if (!deleteDriverLicense) {
-        throw new Error('Driver license not found')
+        throw new Error("Driver license not found");
       }
-      await User.deleteOne({ driverLicenses: did })
+  
+      // Cập nhật User: Xóa giá trị driverLicenses (đặt thành null)
+      await User.updateOne({ driverLicenses: did }, { $unset: { driverLicenses: "" } });
+  
     } catch (error) {
-      throw new Error(error)
+      throw new Error(error.message);
     }
   }
 }
